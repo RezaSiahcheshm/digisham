@@ -16,7 +16,7 @@ class CreateCafesTable extends Migration
         Schema::create('cafes', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();/*نام رستوران*/
-            $table->string('code')->nullable()->unique();/*کد اختصاصی رستوران*/
+            $table->string('code')->nullable()->/*کد اختصاصی رستوران*/
             $table->string('status')->nullable();/*وضعیت کار رستوران*/
             $table->string('type')->nullable();/*نوع رستوران*/
             $table->string('priceLvl')->nullable();/*سطح قیمت غذا رستوران*/
