@@ -17,7 +17,7 @@
         }
 
         main {
-            height:  calc( 100vh - 100px);
+            height: calc(100vh - 100px);
         }
 
     </style>
@@ -25,8 +25,6 @@
 @section('content')
     <div class="wrapper">
         <a href="{{route('slideMenu')}}" class="ibars icon text-white "><i class="fas fa-bars"></i></a>
-        <a href="{{route('restaurant')}}">
-            <main class=""></main>
-        </a>
+        <main class=""></main>
     </div>
 @endsection

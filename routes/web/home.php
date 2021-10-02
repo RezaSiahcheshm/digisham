@@ -21,12 +21,14 @@ use App\Http\Controllers\SlideMenuController;
 
 
 Route::get('/' , function () {
+//    return \Carbon\Carbon::now();
+
 //    auth()->logout();
     return redirect(route('home'));
 //    return view('emails.login-to-website');
 });
 Route::get('home' , [HomeController::class , 'index'])->name('home');
-Route::get('restaurant' , [MenuController::Class , 'index'])->name('restaurant');
+Route::get('cafe/{cafe}' , [MenuController::Class , 'index'])->name('cafe');
 Route::get('comment' , [CommentController::Class , 'index'])->name('comment');
 Route::get('information' , [InformationController::Class , 'index'])->name('information');
 
