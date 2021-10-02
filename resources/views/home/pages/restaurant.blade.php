@@ -2,8 +2,8 @@
 @section('style')
     <style>
         .restaurant-baner {
-            background-image: url({{asset('images/4.png')}});
-            height: 15rem;
+            background-image: url({{asset('images/10.JPG' ?? 'images/600x300.jpg')}});
+            height: 10rem;
             min-width: 100%;
             background-size: cover;
             background-repeat: no-repeat;
@@ -38,7 +38,7 @@
             border-top-right-radius: 25px;
             border-top-left-radius: 25px;
             background-color: #f5f5f5;
-            transform: translateY(-70px);
+            transform: translateY(-20px);
         }
 
         .nav-pills .nav-link {
@@ -62,7 +62,7 @@
     <div class="wrapper ">
         <header class="restaurant-baner">
             <div class="header-icons">
-                <span class="iclose">
+                <span class="iclose invisible">
                     <a href="{{route('home')}}"><i class="fas fa-times"></i></a>
                 </span>
                 <span class="iheart">
@@ -72,12 +72,12 @@
         </header>
         <main class="pt-2">
             <div class="d-flex justify-content-between mb-2">
-                <h1 class="h2 my-auto mr-3">شمرون کباب</h1>
+                <h1 class="h2 my-auto mr-3">{{$cafe->name}}</h1>
                 <a href="{{route('comment')}}" class="border border-secondary rounded text-center px-1 py-2 ml-3 mt-1 ">
                     <small class="text-muted px-1">اطلاعات و نظرات</small>
                     <div class="d-flex align-items-center">
-                        <span class="align-items-center px-1">1534<i class="fas fa-comment-alt pr-1"></i></span>
-                        <span class="align-items-center px-1">4.2<i class="fas fa-star pr-1"></i></span>
+                        <span class="align-items-center px-1">0<i class="fas fa-comment-alt pr-1"></i></span>
+                        <span class="align-items-center px-1">5.0<i class="fas fa-star pr-1"></i></span>
                     </div>
                 </a>
             </div>
@@ -100,97 +100,23 @@
             </div>
             <div class="tab-content">
                 <div class="tab-pane active" id="khorak">
-                    <div class="border-top border-bottom p-2">
-                        <div class="d-flex">
-                            <img src="{{asset('images/5.jpg')}}" class="ml-2" height="90" alt="">
-                            <div class="m-2">
-                                <h3 class="h5">خوراک کباب راسته بره1</h3>
-                                <p class="text-muted  m-0 ">۳۸۰ گرم راسته بره ذغالی، نان تازه داغ، گوجه کبابی، فلفل کبابی، ریحان تازه، لیمو ترش، ترشی انبه</p>
+                    @foreach($products as $product)
+                        <div class="border-top border-bottom p-2">
+                            <div class="d-flex">
+                                <img src="{{asset('images/5.jpg' ?? 'images/300x300.jpg')}}" class="col-3 ml-2  px-0" alt="{{$product->title}}">
+                                <div class="d-flex flex-column justify-content-between col-9 p-1 pl-2">
+                                    <div class="d-flex flex-column">
+                                        <h3 class="h6">{{$product->title}}</h3>
+                                        <p class="text-muted small m-0">{{$product->description}}</p>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-end">
+                                        <span id="translate" class="translate" style="font-size: 1.1rem">{{number_format($product->price)}}</span>
+                                        <span class="pr-1" style="font-size: 0.8rem">تومان</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="d-flex align-items-center flex-wrap pr-2">
-                                <span style="font-size: 1rem">۱۵۰,۰۰۰</span>
-                                <span class="pr-1" style="font-size: 0.8rem">تومان</span>
-                            </div>
-                            <div class="spinner btn-group col-4">
-                                <input class="form-control p-0" inputmode='none' disabled type="number" value="0" min="0" max="100">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="border-top border-bottom p-2">
-                        <div class="d-flex">
-                            <img src="{{asset('images/5.jpg')}}" class="ml-2" height="90" alt="">
-                            <div class="m-2">
-                                <h3 class="h5">خوراک کباب راسته بره2</h3>
-                                <p class="text-muted  m-0 ">۳۸۰ گرم راسته بره ذغالی، نان تازه داغ، گوجه کبابی، فلفل کبابی، ریحان تازه، لیمو ترش، ترشی انبه</p>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="d-flex align-items-center flex-wrap pr-2">
-                                <span style="font-size: 1rem">۱۵۰,۰۰۰</span>
-                                <span class="pr-1" style="font-size: 0.8rem">تومان</span>
-                            </div>
-                            <div class="spinner btn-group col-4">
-                                <input class="form-control p-0" inputmode='none' disabled type="number" value="0" min="0" max="100">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="border-top border-bottom p-2">
-                        <div class="d-flex">
-                            <img src="{{asset('images/5.jpg')}}" class="ml-2" height="90" alt="">
-                            <div class="m-2">
-                                <h3 class="h5">خوراک کباب راسته بره3</h3>
-                                <p class="text-muted  m-0 ">۳۸۰ گرم راسته بره ذغالی، نان تازه داغ، گوجه کبابی، فلفل کبابی، ریحان تازه، لیمو ترش، ترشی انبه</p>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="d-flex align-items-center flex-wrap pr-2">
-                                <span style="font-size: 1rem">۱۵۰,۰۰۰</span>
-                                <span class="pr-1" style="font-size: 0.8rem">تومان</span>
-                            </div>
-                            <div class="spinner btn-group col-4">
-                                <label class="control-label"></label>
-                                <input class="form-control p-0" inputmode='none' disabled type="number" value="0" min="0" max="100">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="border-top border-bottom p-2">
-                        <div class="d-flex">
-                            <img src="{{asset('images/5.jpg')}}" class="ml-2" height="90" alt="">
-                            <div class="m-2">
-                                <h3 class="h5">خوراک کباب راسته بره4</h3>
-                                <p class="text-muted  m-0 ">۳۸۰ گرم راسته بره ذغالی، نان تازه داغ، گوجه کبابی، فلفل کبابی، ریحان تازه، لیمو ترش، ترشی انبه</p>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="d-flex align-items-center flex-wrap pr-2">
-                                <span style="font-size: 1rem">۱۵۰,۰۰۰</span>
-                                <span class="pr-1" style="font-size: 0.8rem">تومان</span>
-                            </div>
-                            <div class="spinner btn-group col-4">
-                                <input class="form-control p-0" inputmode='none' disabled type="number" value="0" min="0" max="100">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="border-top border-bottom p-2">
-                        <div class="d-flex">
-                            <img src="{{asset('images/5.jpg')}}" class="ml-2" height="90" alt="">
-                            <div class="m-2">
-                                <h3 class="h5">خوراک کباب راسته بره4</h3>
-                                <p class="text-muted  m-0 ">۳۸۰ گرم راسته بره ذغالی، نان تازه داغ، گوجه کبابی، فلفل کبابی، ریحان تازه، لیمو ترش، ترشی انبه</p>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="d-flex align-items-center flex-wrap pr-2">
-                                <span style="font-size: 1rem">۱۵۰,۰۰۰</span>
-                                <span class="pr-1" style="font-size: 0.8rem">تومان</span>
-                            </div>
-                            <div class="spinner btn-group col-4">
-                                <input class="form-control p-0" inputmode='none' disabled type="number" value="0" min="0" max="100">
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="tab-pane fade" id="pish">
                     <div class="border-top border-bottom p-2">
@@ -372,11 +298,5 @@
                 </div>
             </div>
         </main>
-
-        <footer class="fixed-bottom">
-            <form action="bag.html" class="px-4 py-3">
-                <button type="submit" class="btn btn-primary btn-lg btn-block ">تکمیل خرید</button>
-            </form>
-        </footer>
     </div>
 @endsection
