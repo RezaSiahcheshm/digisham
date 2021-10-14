@@ -16,13 +16,15 @@ const mix = require('laravel-mix');
 // });
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/home/bootstrap-number-input.js', 'public/js')
-    .css('resources/css/app.css', 'public/css')
+    .css('resources/css/home/bootstrap-rtl.css', 'public/css')
+    .css('resources/css/home/style.css', 'public/css')
+    .css('resources/fonts/diroz-font.css', 'public/fonts')
+
     /*
         ========================
                 Assets
         ========================
     */
-    .css('resources/css/admin/fonts/diroz-font.css', 'public/css/admin')
     .sass('resources/sass/admin/assets/structure.scss', 'public/css/admin')
     .sass('resources/sass/admin/assets/loader.scss', 'public/css/admin')
     .sass('resources/sass/admin/assets/main.scss', 'public/css/admin')

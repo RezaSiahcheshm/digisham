@@ -12,7 +12,7 @@
 
 }
 
-*{
+body{
     letter-spacing: 0!important;
     font-family: 'diroz' !important;
 }
@@ -22,4 +22,7 @@
 .far {
     font-family: 'Font Awesome 5 Free' !important;
     font-weight: 400;
+}
+.fas {
+    font-family: "Font Awesome 5 Free" !important;
 }
