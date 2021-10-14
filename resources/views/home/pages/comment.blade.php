@@ -98,9 +98,9 @@
                 <i class="fas fa-chevron-left"></i>
             </span>
             <h4 class="m-0">شمرون کباب</h4>
-            <a href="{{route('restaurant')}}" class="icon">
+            {{--<a href="{{route('cafe')}}" class="icon">--}}
                 <i class="fas fa-chevron-left"></i>
-            </a>
+            {{--</a>--}}
         </header>
         <main class="">
             <!--<div class="d-flex justify-content-between align-items-center border-bottom p-1 ">-->
