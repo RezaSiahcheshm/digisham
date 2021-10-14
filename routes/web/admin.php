@@ -18,7 +18,7 @@ use Artesaos\SEOTools\Facades\SEOTools;
 |
 */
 
-Route::get('/' , function () {
+//Route::get('/' , function () {
 //    return \Carbon\Carbon::now();
 //    $product = \App\Models\Product::find(1);
 //    $product->Comments()->create([
@@ -37,7 +37,7 @@ Route::get('/' , function () {
 //return $cafe->products()->get();
 //    $product = \App\Models\Product::find(1);
 //    return $product->productable;
-});
+//});
 Route::get('/' , AdminController::class);
 Route::resource('users' , UsersController::class)->except('show');
 Route::resource('cafe' , CafeController::class)->except('show');

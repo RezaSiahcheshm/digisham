@@ -45,7 +45,7 @@ class ProductController extends Controller
 //            'inventory' => $valid['inventory'] ,
         ]);
         alert()->success('محصول با موفقیت ثبت شد');
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.create');
     }
 
     public function show(Product $product)

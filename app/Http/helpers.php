@@ -27,25 +27,30 @@ if(!function_exists('isActive')) {
 
     function getAccessLevel($user): string
     {
-        if($user->accessLevel === 'MC') {
-            return 'مدیر شرکت';
-        } elseif($user->accessLevel === 'MR') {
-            return 'مدیر رستوران';
-        } elseif($user->accessLevel === 'SC') {
-            return 'کارمند شرکت';
-        } elseif($user->accessLevel === 'SR') {
-            return 'کارمند رستوران';
-        } else {
-            return 'کاربر';
+        if(!empty($user->accessLevel)) {
+            if($user->accessLevel === 'MC') {
+                return 'مدیر شرکت';
+            } elseif($user->accessLevel === 'MR') {
+                return 'مدیر رستوران';
+            } elseif($user->accessLevel === 'SC') {
+                return 'کارمند شرکت';
+            } elseif($user->accessLevel === 'SR') {
+                return 'کارمند رستوران';
+            } else {
+                return 'کاربر';
+            }
+        } else{
+            return 'لطفا وارد شوید';
         }
     }
+
 
     function convertNumbers(string $srting , $toPersian = true)
     {
         $english = ['0' , '1' , '2' , '3' , '4' , '5' , '6' , '7' , '8' , '9'];
         $persian = ['٠' , '١' , '٢' , '٣' , '٤' , '٥' , '٦' , '٧' , '٨' , '٩'];
         $persian2 = ['۰' , '۱' , '۲' , '۳' , '۴' , '۵' , '۶' , '۷' , '۸' , '۹'];
-        $persianDecimal = ['&#1776;', '&#1777;', '&#1778;', '&#1779;', '&#1780;', '&#1781;', '&#1782;', '&#1783;', '&#1784;', '&#1785;'];
+        $persianDecimal = ['&#1776;' , '&#1777;' , '&#1778;' , '&#1779;' , '&#1780;' , '&#1781;' , '&#1782;' , '&#1783;' , '&#1784;' , '&#1785;'];
         $arabic = ['٩' , '٨' , '٧' , '٦' , '٥' , '٤' , '٣' , '٢' , '١' , '٠'];
         if(!$toPersian) {
             $srting = str_replace($persian , $english , $srting);
