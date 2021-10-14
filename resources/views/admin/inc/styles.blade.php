@@ -6,7 +6,7 @@
 <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
 
 @if ($page_name != 'coming_soon' && $page_name != 'contact_us' && $page_name != 'error404' && $page_name != 'error500' && $page_name != 'error503' && $page_name != 'faq' && $page_name != 'helpdesk' && $page_name != 'maintenence' && $page_name != 'privacy' && $page_name != 'auth_boxed' && $page_name != 'auth_default')
-    <link href="{{asset('./css/admin/diroz-font.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('./fonts/diroz-font.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('./css/admin/main.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('./plugins/perfect-scrollbar/perfect-scrollbar.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('./css/admin/structure.css')}}" rel="stylesheet" type="text/css"/>
@@ -97,7 +97,13 @@
     </style>
     @break
 
+    @case('sales')
+    {{-- Dashboard 2 --}}
+    <link href="{{asset('plugins/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('./css/admin/widgets/modules-widgets.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('./css/admin/dashboard/dash_1.css')}}" rel="stylesheet" type="text/css"/>
 
+    @break
 
 
 
@@ -117,12 +123,6 @@
     {{-- Dashboard --}}
     <link href="{{asset('plugins/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('./css/admin/dashboard/dash_2.css')}}" rel="stylesheet" type="text/css"/>
-    @break
-
-    @case('sales')
-    {{-- Dashboard 2 --}}
-    <link href="{{asset('plugins/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('./css/admin/dashboard/dash_1.css')}}" rel="stylesheet" type="text/css"/>
     @break
 
     @case('calendar')

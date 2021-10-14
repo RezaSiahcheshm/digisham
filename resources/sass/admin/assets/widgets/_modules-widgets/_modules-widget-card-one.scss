@@ -11,10 +11,8 @@
 
   .widget-content {
     .media {
-      padding-right: 15px;
-      padding-left: 15px;
+      padding: 0px 15px 15px 15px;
       margin-bottom: 19px;
-      padding-bottom: 21px;
       border-bottom: 1px dashed $m-color_3;
 
       .w-img {
@@ -41,7 +39,7 @@
       }
 
       p {
-        font-size: 14px;
+        font-size: 12px;
         letter-spacing: 1px;
         margin-bottom: 0;
         font-weight: 600;
@@ -52,9 +50,9 @@
 
     p {
       font-weight: 600;
-      font-size: 13px;
+      font-size: 14px;
       margin-bottom: 61px;
-      padding: 0 20px;
+      padding: 0 15px;
     }
 
     .w-action {
