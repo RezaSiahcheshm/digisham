@@ -153,7 +153,7 @@
     box-shadow: 0 0 40px 0 rgba(94,92,154,.06);
 }
 .widget-three .widget-heading {
-    margin-bottom: 54px;
+    margin-bottom: 35px;
 }
 .widget-three .widget-heading h5 {
     font-size: 19px;
@@ -412,10 +412,12 @@
 .widget-activity-four {
     padding-left: 0!important;
     padding-right: 0!important;
+    height: 100%;
+
 }
 .widget-activity-four .mt-container {
     position: relative;
-    height: 272px;
+    /*height: 272px;*/
     overflow: auto;
     padding-left: 12px;
 }
@@ -562,7 +564,7 @@
 
 /*
     =====================
-        Account Info
+        اطلاعات اکانت
     =====================
 */
 
@@ -1026,5 +1028,4 @@
         display: block;
         margin: 0 auto 5px auto;
     }
-
 }
