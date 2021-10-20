@@ -5,14 +5,14 @@
     <div class="header-container fixed-top">
         <header class="header navbar navbar-expand-sm">
 
-            <ul class="navbar-nav theme-brand flex-row  text-center  ">
-                <li class="nav-item theme-logo d-none d-lg-block">
-                    {{--<a href="{{route('admin.')}}"><img src="{{asset('images/90x90.jpg')}}" class="navbar-logo" alt="logo"></a>--}}
+            <ul class="navbar-nav theme-brand flex-row justify-content-lg-between text-center px-4">
+                {{--<li class="nav-item theme-logo d-none d-lg-block">--}}
+                {{--    <a href="{{route('admin.')}}"><img src="{{asset('images/90x90.jpg')}}" class="navbar-logo" alt="logo"></a>--}}
+                {{--</li>--}}
+                <li class="nav-item theme-text flex-nowrap ">
+                    <a href="{{route('admin.')}}" class="nav-link">دیجی‌شام</a>
                 </li>
-                <li class="nav-item theme-text mr-4 pr-1">
-                    <a href="{{route('admin.')}}" class="nav-link"> منوپی</a>
-                </li>
-                <li class="nav-item toggle-sidebar">
+                <li class="nav-item toggle-sidebar mx-auto mx-lg-0">
                     <a href="javascript:void(0);" class="sidebarCollapse" data-placement="bottom">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3" y2="6"></line><line x1="3" y1="12" x2="3" y2="12"></line><line x1="3" y1="18" x2="3" y2="18"></line></svg>
                     </a>
@@ -50,7 +50,7 @@
             </ul>
 
 
-            <ul class="navbar-item flex-row navbar-dropdown {{ ($category_name === 'starter_kits') ? 'ml-auto' : '' }}">
+            <ul class="navbar-item flex-row navbar-dropdown">
 
                 {{--<li class="nav-item dropdown language-dropdown more-dropdown">--}}
                 {{--    <div class="dropdown  custom-dropdown-icon">--}}
@@ -63,93 +63,51 @@
                 {{--        </div>--}}
                 {{--    </div>--}}
                 {{--</li>--}}
-
-                <li class="nav-item dropdown message-dropdown">
-                    <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="messageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                        <span class="badge badge-primary"></span>
-                    </a>
-                    <div class="dropdown-menu p-0 position-absolute animated fadeInUp" aria-labelledby="messageDropdown">
-                        <div class="">
-                            <a class="dropdown-item">
-                                <div class="">
-
-                                    <div class="media">
-                                        <div class="user-img">
-                                            <div class="avatar avatar-xl">
-                                                <span class="avatar-title rounded-circle">KY</span>
-                                            </div>
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="">
-                                                <h5 class="usr-name">محسن رضایی</h5>
-                                                <p class="msg-title">بروزرسانی اکانت</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
-                            <a class="dropdown-item">
-                                <div class="">
-                                    <div class="media">
-                                        <div class="user-img">
-                                            <div class="avatar avatar-xl">
-                                                <span class="avatar-title rounded-circle">DA</span>
-                                            </div>
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="">
-                                                <h5 class="usr-name">هومن شکیبا</h5>
-                                                <p class="msg-title">پیام شما</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item">
-                                <div class="">
-
-                                    <div class="media">
-                                        <div class="user-img">
-                                            <div class="avatar avatar-xl">
-                                                <span class="avatar-title rounded-circle">OG</span>
-                                            </div>
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="">
-                                                <h5 class="usr-name">زهرا جوان</h5>
-                                                <p class="msg-title">اکانت شما بروز شد</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </li>
+                {{--<li class="nav-item dropdown message-dropdown">--}}
+                {{--    <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="messageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                {{--        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>--}}
+                {{--        <span class="badge badge-primary"></span>--}}
+                {{--    </a>--}}
+                {{--    <div class="dropdown-menu p-0 position-absolute animated fadeInUp" aria-labelledby="messageDropdown">--}}
+                {{--        <div class="">--}}
+                {{--            <a class="dropdown-item">--}}
+                {{--                <div class="">--}}
+                {{--                    <div class="media">--}}
+                {{--                        <div class="user-img">--}}
+                {{--                            <div class="avatar avatar-xl">--}}
+                {{--                                <span class="avatar-title rounded-circle">OG</span>--}}
+                {{--                            </div>--}}
+                {{--                        </div>--}}
+                {{--                        <div class="media-body">--}}
+                {{--                            <div class="">--}}
+                {{--                                <h5 class="usr-name">زهرا جوان</h5>--}}
+                {{--                                <p class="msg-title">اکانت شما بروز شد</p>--}}
+                {{--                            </div>--}}
+                {{--                        </div>--}}
+                {{--                    </div>--}}
+                {{--                </div>--}}
+                {{--            </a>--}}
+                {{--        </div>--}}
+                {{--    </div>--}}
+                {{--</li>--}}
 
                 <li class="nav-item dropdown notification-dropdown">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-                        <span class="badge badge-success"></span>
+                        <span class="badge badge-warning"></span>
                     </a>
                     <div class="dropdown-menu position-absolute animated fadeInUp" aria-labelledby="notificationDropdown">
                         <div class="notification-scroll">
 
                             <div class="dropdown-item">
-                                <div class="media server-log">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-server">
-                                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                                    <line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg>
+                                <div class="media">
+                                    {{-- file-upload server-log coler svg --}}
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-coffee"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
                                     <div class="media-body">
                                         <div class="data-info">
-                                            <h6 class="">راه اندازی مجدد سرور</h6>
-                                            <p class="">45 دقیقه دیگر</p>
+                                            <h6 class="">رستوران تایید گردید</h6>
+                                            <p class="">{{Jalalian::forge('now - 240 minutes')->ago()}}</p>
                                         </div>
-
                                         <div class="icon-status">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                                         </div>
@@ -158,14 +116,15 @@
                             </div>
 
                             <div class="dropdown-item">
-                                <div class="media ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                                <div class="media">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-check"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clipboard"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                                     <div class="media-body">
                                         <div class="data-info">
-                                            <h6 class="">لایسنس به زودی منقضی می شود</h6>
-                                            <p class="">8 ساعت دیگر</p>
+                                            <h6 class="">احراز هویت شما با موفقیت تایید گردید</h6>
+                                            <p class="">{{Jalalian::forge('now - 360 minutes')->ago()}}</p>
                                         </div>
-
                                         <div class="icon-status">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                                         </div>
@@ -173,21 +132,6 @@
                                 </div>
                             </div>
 
-                            <div class="dropdown-item">
-                                <div class="media file-upload">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                                    <div class="media-body">
-                                        <div class="data-info">
-                                            <h6 class="">Kelly Portfolio.pdf</h6>
-                                            <p class="">670 kb</p>
-                                        </div>
-
-                                        <div class="icon-status">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </li>
@@ -227,15 +171,13 @@
                                 <span>قفل کردن صفحه</span>
                             </a>
                         </div>
-                        <div class="dropdown-item">
-                            <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
+                        <div class="dropdown-item cursor-pointer">
+                            <a onclick="event.preventDefault(); document.getElementById('logout-form').submit();" >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
                                 خروج
                             </a>
                         </div>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" hidden>
                             @csrf
                         </form>
                     </div>
