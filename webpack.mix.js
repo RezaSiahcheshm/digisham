@@ -16,8 +16,8 @@ const mix = require('laravel-mix');
 // });
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/home/bootstrap-number-input.js', 'public/js')
-    .css('resources/css/home/bootstrap-rtl.css', 'public/css')
-    .css('resources/css/home/style.css', 'public/css')
+    .css('resources/sass/home/bootstrap-rtl.css', 'public/css')
+    .css('resources/sass/home/style.css', 'public/css')
     .css('resources/fonts/diroz-font.css', 'public/fonts')
 
     /*
@@ -31,8 +31,8 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/admin/assets/scrollspyNav.scss', 'public/css/admin/')
 
     // Dashboard
-    .css('resources/css/admin/dashboard/dash_1.css', 'public/css/admin/dashboard')
-    .css('resources/css/admin/dashboard/dash_2.css', 'public/css/admin/dashboard')
+    .css('resources/sass/admin/assets/dashboard/dash_1.css', 'public/css/admin/dashboard')
+    .css('resources/sass/admin/assets/dashboard/dash_2.css', 'public/css/admin/dashboard')
 
     // Apps
     .sass('resources/sass/admin/assets/apps/contacts.scss', 'public/css/admin/apps')
@@ -92,7 +92,7 @@ mix.js('resources/js/app.js', 'public/js')
 
     // Tables
     .sass('resources/sass/admin/assets/tables/table-basic.scss', 'public/css/admin/tables/')
-    .css('resources/css/admin/tables/custom-table.css', 'public/css/admin/tables/')
+    .css('resources/sass/admin/assets/tables/custom-table.css', 'public/css/admin/tables/')
 
     // Users
     .sass('resources/sass/admin/assets/users/account-setting.scss', 'public/css/admin/users/')
