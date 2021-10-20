@@ -31,7 +31,7 @@
             </a>
             <div class="d-flex flex-column">
                 <img class="rounded-circle" src="{{asset('images/profile.png')}}" alt="profile" width="150" height="150">
-                <span class="text-center m-0 pt-3">جعفر طیار</span>
+                <span class="text-center m-0 pt-3">{{getFullName(Auth::user())}}</span>
             </div>
             <span class="icon iclose invisible">
                 <i class="fas fa-times"></i>
