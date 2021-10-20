@@ -9,7 +9,6 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {!! SEO::generate() !!}
-    {{--<title>{{ setTitle($page_name) }}</title>--}}
     <link rel="icon" type="image/x-icon" href="{{asset('images/favicon.ico')}}"/>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
