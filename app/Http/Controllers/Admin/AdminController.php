@@ -18,7 +18,7 @@ class AdminController extends Controller
 
     public function __invoke()
     {
-        $this->seo()->setTitle('admin');
+        $this->seo()->setTitle('پنل مدیریت');
         return view('admin.admin')->with($this->admin);
     }
 }
