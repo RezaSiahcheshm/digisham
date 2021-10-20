@@ -10,7 +10,9 @@
                             <div class="media">
                                 <div class="media-body d-flex  justify-content-between align-items-center">
                                     <h5>پیام</h5>
-                                    <p class="meta-date-time">دوشنبه 20 مهر</p>
+                                    <p class="meta-date-time">
+                                        {{ Jalalian::forge('today')->format('%A %d %B ')}}
+                                    </p>
                                 </div>
                             </div>
                             <p class="text-muted">به دیجی شام خوش آمدید</p>
@@ -102,7 +104,7 @@
                     <div class="widget widget-activity-four">
 
                         <div class="widget-heading">
-                            <h5 class="">فعالیت های اخیر</h5>
+                            <h5 class="">وضعیت سرویس</h5>
                         </div>
 
                         <div class="widget-content">
@@ -110,53 +112,48 @@
 
                                 <div class="timeline-line">
 
-                                    <div class="item-timeline  timeline-secondary">
-                                        <div class="t-dot" data-original-title="" title="">
-                                        </div>
+                                    <div class="item-timeline  timeline-success">
+                                        <div class="t-dot" data-original-title="" title=""></div>
                                         <div class="t-text">
-                                            <p>راه اندازی مجدد سرور</p>
-                                            <span class="badge badge-success">تکمیل شده</span>
+                                            <p>تکمیل اطلاعات کاربری</p>
+                                            <span class="badge badge-success">تایید شده</span>
                                             <p class="t-time">17:00</p>
                                         </div>
                                     </div>
 
                                     <div class="item-timeline  timeline-warning">
-                                        <div class="t-dot" data-original-title="" title="">
-                                        </div>
+                                        <div class="t-dot" data-original-title="" title=""></div>
                                         <div class="t-text">
-                                            <p>جزئیات قرارداد را به فریلنسر ارسال کنید</p>
-                                            <span class="badge badge-danger">در انتظار</span>
+                                            <p>تکمیل اطلاعات رستوران</p>
+                                            <span class="badge badge-warning">در انتظار تایید</span>
                                             <p class="t-time">18:00</p>
                                         </div>
                                     </div>
 
-                                    <div class="item-timeline  timeline-dark">
-                                        <div class="t-dot" data-original-title="" title="">
-                                        </div>
+                                    <div class="item-timeline  timeline-primary">
+                                        <div class="t-dot" data-original-title="" title=""></div>
                                         <div class="t-text">
-                                            <p>مهدی می خواهد زمان پروژه را افزایش دهد.</p>
+                                            <p>تنظیم قرارداد</p>
                                             <span class="badge badge-primary">در حال پیش رفت</span>
-                                            <p class="t-time">19:00</p>
+                                            <p class="t-time"></p>
                                         </div>
                                     </div>
 
-                                    <div class="item-timeline  timeline-success">
-                                        <div class="t-dot" data-original-title="" title="">
-                                        </div>
+                                    <div class="item-timeline">
+                                        <div class="t-dot" data-original-title="" title=""></div>
                                         <div class="t-text">
-                                            <p>سرور برای حفظ و نگهداری</p>
-                                            <span class="badge badge-success">تکمیل شده</span>
-                                            <p class="t-time">19:00</p>
+                                            <p>چاپ بارکد</p>
+                                            <span class="badge badge-dark">نا‌مشخص</span>
+                                            <p class="t-time"></p>
                                         </div>
                                     </div>
 
-                                    <div class="item-timeline  timeline-secondary">
-                                        <div class="t-dot" data-original-title="" title="">
-                                        </div>
+                                    <div class="item-timeline">
+                                        <div class="t-dot" data-original-title="" title=""></div>
                                         <div class="t-text">
-                                            <p>پیوند مخرب شناسایی شد</p>
-                                            <span class="badge badge-warning">مسدود شده</span>
-                                            <p class="t-time">20:00</p>
+                                            <p>تحویل بارکد </p>
+                                            <span class="badge badge-dark">نا‌مشخص</span>
+                                            <p class="t-time"></p>
                                         </div>
                                     </div>
 
