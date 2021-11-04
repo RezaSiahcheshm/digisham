@@ -1,4 +1,23 @@
 @extends('layouts.admin-master')
+@section('style')
+    {{-- User Create --}}
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/dropify/dropify.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('./css/admin/tables/custom-table.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('./css/admin/elements/alert.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap-select/bootstrap-select.min.css')}}">
+    <style>
+        .widget .widget-header {
+            border-bottom: 1px solid #ebedf2;
+        }
+    </style>
+@endsection
+@section('script')
+    {{-- User Create  --}}
+    <script src="{{asset('assets/js/users/account-settings.js')}}"></script>
+    <script src="{{asset('plugins/dropify/dropify.min.js')}}"></script>
+    <script src="{{asset('plugins/blockui/jquery.blockUI.min.js')}}"></script>
+    <script src="{{asset('plugins/bootstrap-select/bootstrap-select.min.js')}}"></script>
+@endsection
 @section('content')
     <div class="layout-px-spacing">
         <div class="account-settings-container layout-top-spacing">
@@ -21,7 +40,6 @@
                                                 <div class="col-xl-3 col-lg-2 col-md-3">
                                                     <div class="upload  mt-0 pr-md-3">
                                                         <input name="upload" type="file" class="dropify" id="input-file-max-fs" data-default-file="{{asset('/images/300x300.jpg')}}" data-max-file-size="2M" data-height="220"/>
-                                                        {{--<p><i class="flaticon-cloud-upload mr-1"></i> آپلود عکس</p>--}}
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-9 col-lg-10 col-md-9 md-0 mt-3">
@@ -95,7 +113,7 @@
                                         </div>
                                     </div>
                                     <div class="form-row ">
-                                        <div class="form-group col-md-3 col-sm-6">
+                                        <div class="form-group col-md-5 col-sm-6">
                                             <label for="identifyNumber">کد ملی</label>
                                             <input name="identifyNumber" type="text" class="form-control @error('identifyNumber') is-invalid @enderror " id="identifyNumber" value="{{old('identifyNumber')}}" placeholder="کد ملی" autocomplete="identifyNumber" autofocus>
                                             @error('identifyNumber')
@@ -103,28 +121,7 @@
                                                 <strong>{{ $message }}</strong></span>
                                             @enderror
                                         </div>
-                                        <div class="form-group col-md-3 col-sm-6 ">
-                                            <label for="accessLevel">سمت</label>
-                                            <select name="accessLevel" class="form-control selectpicker @error('accessLevel') is-invalid @enderror">
-                                                <option value="U" selected>کاربر</option>
-                                                <option value="SR">کارمند رستوران</option>
-                                                <option value="MR">مدیر رستوران</option>
-                                                <option value="SC">کارمند شرکت</option>
-                                            </select>
-                                            @error('accessLevel')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong></span>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group col-md-3 col-sm-6 ">
-                                            <label for="birthday">تاریخ تولد</label>
-                                            <input name="birthday" type="text" class="form-control @error('birthday') is-invalid @enderror " id="birthday" value="{{old('birthday')}}" placeholder="تاریخ تولد" autocomplete="birthday" autofocus>
-                                            @error('birthday')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong></span>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group col-md-3 col-sm-6">
+                                        <div class="form-group col-md-2 col-sm-6">
                                             <label for="status">وضعیت حساب کاربر</label>
                                             <select name="status" class="form-control selectpicker @error('status') is-invalid @enderror">
                                                 <option value="A">فعال</option>
@@ -136,8 +133,43 @@
                                                 <strong>{{ $message }}</strong></span>
                                             @enderror
                                         </div>
-
+                                        <div class="form-group col-md-5">
+                                            <label for="birthday">تاریخ تولد</label>
+                                            <input name="birthday" type="text" class="form-control @error('birthday') is-invalid @enderror " id="birthday" value="{{old('birthday')}}" placeholder="تاریخ تولد" autocomplete="birthday" autofocus>
+                                            @error('birthday')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong></span>
+                                            @enderror
+                                        </div>
                                     </div>
+                                    @can('permissions-users')
+                                        <div class="form-row">
+                                            <div class="form-group col-6">
+                                                <label for="permissions">دسترسی‌ها</label>
+                                                <select name="permissions[]" class="form-control selectpicker @error('permissions') is-invalid @enderror" id="permission" data-live-search="true" multiple>
+                                                    @foreach(\App\Models\Permission::all() as $permission)
+                                                        <option value="{{$permission->id}}" data-content="<span class='badge badge-primary'>{{$permission->label}} - {{$permission->name}}</span>"></option>
+                                                    @endforeach
+                                                </select>
+                                                @error('permissions')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong></span>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group col-6">
+                                                <label for="roles">نقش‌ها</label>
+                                                <select name="roles[]" class="form-control selectpicker @error('roles') is-invalid @enderror" id="roles" data-live-search="true" multiple>
+                                                    @foreach(\App\Models\Role::all() as $role)
+                                                        <option value="{{$role->id}}" data-content="<span class='badge badge-primary'>{{$role->label}} - {{$role->name}}</span>"></option>
+                                                    @endforeach
+                                                </select>
+                                                @error('roles')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong></span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    @endcan
                                     <button type="submit" class="btn btn-primary">افزودن</button>
                                 </div>
                             </div>
@@ -149,13 +181,3 @@
         </div>
     </div>
 @endsection
-
-
-
-
-
-
-
-
-
-

@@ -1,4 +1,21 @@
 @extends('layouts.admin-master')
+@section('style')
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/dropify/dropify.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('./css/admin/tables/custom-table.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('./css/admin/elements/alert.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap-select/bootstrap-select.min.css')}}">
+    <style>
+        .widget .widget-header {
+            border-bottom: 1px solid #ebedf2;
+        }
+    </style>
+@endsection
+@section('script')
+    <script src="{{asset('assets/js/users/account-settings.js')}}"></script>
+    <script src="{{asset('plugins/dropify/dropify.min.js')}}"></script>
+    <script src="{{asset('plugins/blockui/jquery.blockUI.min.js')}}"></script>
+    <script src="{{asset('plugins/bootstrap-select/bootstrap-select.min.js')}}"></script>
+@endsection
 @section('content')
     <div class="layout-px-spacing">
         <div class="account-settings-container layout-top-spacing">
@@ -73,11 +90,11 @@
                                                             <label>جنسیت</label>
                                                             <div class="pb-2 d-flex flex-nowrap">
                                                                 <div class="custom-control custom-radio custom-control-inline pb-2">
-                                                                    <input type="radio" name="gender" class="custom-control-input @error('gender') is-invalid @enderror" id="man" value="M" {{ ($user->gender === 'M') ? 'checked' : '' }}>
+                                                                    <input type="radio" name="gender" class="custom-control-input @error('gender') is-invalid @enderror" id="man" value="M" {{ $user->isMan() ? 'checked' : '' }}>
                                                                     <label class="custom-control-label" for="man">مرد</label>
                                                                 </div>
                                                                 <div class="custom-control custom-radio custom-control-inline pb-2">
-                                                                    <input type="radio" name="gender" class="custom-control-input @error('gender') is-invalid @enderror" id="female" value="F" {{ ($user->gender === 'F') ? 'checked' : '' }}>
+                                                                    <input type="radio" name="gender" class="custom-control-input @error('gender') is-invalid @enderror" id="female" value="F" {{ $user->isFemale() ? 'checked' : '' }}>
                                                                     <label class="custom-control-label" for="female">زن</label>
                                                                 </div>
                                                                 <div class="custom-control custom-radio custom-control-inline pb-2 px-0 mx-0">
@@ -96,7 +113,7 @@
                                         </div>
                                     </div>
                                     <div class="form-row ">
-                                        <div class="form-group col-md-3 col-sm-6">
+                                        <div class="form-group col-md-5 col-sm-6">
                                             <label for="identifyNumber">کد ملی</label>
                                             <input name="identifyNumber" type="text" class="form-control @error('identifyNumber') is-invalid @enderror " id="identifyNumber" value="{{old('identifyNumber') ?? $user->identifyNumber}}" placeholder="کد ملی" autocomplete="identifyNumber" autofocus>
                                             @error('identifyNumber')
@@ -104,29 +121,8 @@
                                                 <strong>{{ $message }}</strong></span>
                                             @enderror
                                         </div>
-                                        <div class="form-group col-md-3 col-sm-6 ">
-                                            <label for="accessLevel">سمت</label>
-                                            <select name="accessLevel" class="form-control selectpicker @error('accessLevel') is-invalid @enderror">
-                                                <option value="U" {{ ($user->accessLevel === 'U') ? 'selected' : '' }}>کاربر</option>
-                                                <option value="SR" {{ ($user->accessLevel === 'SR') ? 'selected' : '' }}>کارمند رستوران</option>
-                                                <option value="MR" {{ ($user->accessLevel === 'MR') ? 'selected' : '' }}>مدیر رستوران</option>
-                                                <option value="SC" {{ ($user->accessLevel === 'SC') ? 'selected' : '' }}>کارمند شرکت</option>
-                                                <option value="{{$user->accessLevel}}" {{ ($user->accessLevel === 'MC') ? 'selected' : '' }}>مدیر شرکت</option>
-                                            </select>
-                                            @error('accessLevel')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong></span>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group col-md-3 col-sm-6 ">
-                                            <label for="birthday">تاریخ تولد</label>
-                                            <input name="birthday" type="text" class="form-control @error('birthday') is-invalid @enderror " id="birthday" value="{{old('birthday') ?? $user->birthday}}" placeholder="تاریخ تولد" autocomplete="birthday" autofocus>
-                                            @error('birthday')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong></span>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group col-md-3 col-sm-6">
+
+                                        <div class="form-group col-md-2 col-sm-6">
                                             <label for="status">وضعیت حساب کاربر</label>
                                             <select name="status" class="form-control selectpicker @error('status') is-invalid @enderror">
                                                 <option value="A" {{ ($user->status === 'A') ? 'selected' : '' }}>فعال</option>
@@ -138,7 +134,43 @@
                                                 <strong>{{ $message }}</strong></span>
                                             @enderror
                                         </div>
+                                        <div class="form-group col-md-5">
+                                            <label for="birthday">تاریخ تولد</label>
+                                            <input name="birthday" type="text" class="form-control @error('birthday') is-invalid @enderror " id="birthday" value="{{old('birthday') ?? $user->birthday}}" placeholder="تاریخ تولد" autocomplete="birthday" autofocus>
+                                            @error('birthday')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong></span>
+                                            @enderror
+                                        </div>
                                     </div>
+                                    @can('permissions-users')
+                                        <div class="form-row">
+                                            <div class="form-group col-6 ">
+                                                <label for="permissions">دسترسی‌ها</label>
+                                                <select name="permissions[]" class="form-control selectpicker @error('permissions') is-invalid @enderror" id="permission" data-live-search="true" multiple>
+                                                    @foreach(\App\Models\Permission::all() as $permission)
+                                                        <option value="{{$permission->id}}" data-content="<span class='badge badge-primary'>{{$permission->label}} - {{$permission->name}}</span>" {{in_array($permission->id , $user->permissions->pluck('id')->toArray()) ? 'selected' : '' }}></option>
+                                                    @endforeach
+                                                </select>
+                                                @error('permissions')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong></span>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group col-6 ">
+                                                <label for="roles">نقش‌ها</label>
+                                                <select name="roles[]" class="form-control selectpicker @error('roles') is-invalid @enderror" id="roles" data-live-search="true" multiple>
+                                                    @foreach(\App\Models\Role::all() as $role)
+                                                        <option value="{{$role->id}}" data-content="<span class='badge badge-primary'>{{$role->label}} - {{$role->name}}</span>" {{in_array($role->id , $user->roles->pluck('id')->toArray()) ? 'selected' : '' }}></option>
+                                                    @endforeach
+                                                </select>
+                                                @error('roles')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong></span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    @endcan
                                     <button type="submit" class="btn btn-primary">ویرایش</button>
                                 </div>
                             </div>

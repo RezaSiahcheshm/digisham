@@ -1,4 +1,39 @@
 @extends('layouts.admin-master')
+@section('style')
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/table/datatable/datatables.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('./css/admin/forms/theme-checkbox-radio.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/table/datatable/dt-global_style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/table/datatable/custom_dt_custom.css')}}">
+@endsection
+@section('script')
+    <script src="{{asset('plugins/table/datatable/datatables.js')}}"></script>
+    <script>
+        // var e;
+        c1 = $('#style-1').DataTable({
+            // headerCallback: function (e, a, t, n, s) {
+            //     e.getElementsByTagName("th")[0].innerHTML = '<label class="new-control new-checkbox checkbox-outline-info m-auto">\n<input type="checkbox" class="new-control-input chk-parent select-customers-info" id="customer-all-info">\n<span class="new-control-indicator"></span><span style="visibility:hidden">c</span>\n</label>'
+            // },
+            // columnDefs: [{
+            //     targets: 0, width: "30px", className: "", orderable: !1, render: function (e, a, t, n) {
+            //         return '<label class="new-control new-checkbox checkbox-outline-info  m-auto">\n<input type="checkbox" class="new-control-input child-chk select-customers-info" id="customer-all-info">\n<span class="new-control-indicator"></span><span style="visibility:hidden">c</span>\n</label>'
+            //     }
+            // }],
+            "oLanguage": {
+                "oPaginate": {
+                    "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>',
+                    "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>'
+                },
+                "sInfo": "صفحه _PAGE_ از _PAGES_",
+                "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+                "sSearchPlaceholder": "جستجو...",
+                "sLengthMenu": "نتایج  :  _MENU_",
+            },
+            "lengthMenu": [3, 5, 10, 15, 20, 50],
+            "pageLength": 15
+        });
+        multiCheck(c1);
+    </script>
+@endsection
 @section('content')
     <div class="layout-px-spacing">
         <div class="row layout-top-spacing layout-spacing">
@@ -8,7 +43,6 @@
                         <div class="row">
                             <div class="col-12">
                                 <h4>لیست کاربران</h4>
-{{--                                {{$users->render()}}--}}
                             </div>
                         </div>
                     </div>
@@ -17,10 +51,9 @@
                             <table id="style-1" class="table style-3 table-hover ">
                                 <thead>
                                 <tr>
-                                    <th class="checkbox-column">-</th>
+                                    <th class="text-center">عکس</th>
                                     <th class="text-center">نام</th>
                                     <th class="text-center">نام خانوادگی</th>
-                                    <th class="text-center">عکس</th>
                                     <th class="text-center">سمت</th>
                                     <th class="text-center">جنسیت</th>
                                     <th class="text-center">نام کاربری</th>
@@ -34,28 +67,25 @@
                                 <tbody>
                                 @foreach($users as $user)
                                     <tr>
-                                        <td class="checkbox-column"> 1</td>
-                                        <td class="user-name">{{$user->name}}</td>
-                                        <td>{{$user->lastname}}</td>
                                         <td class="">
                                             <a class="profile-img" href="javascript: void(0);">
-                                                <img src="{{asset('/images/90x90.jpg')}}" alt="product">
+                                                <img src="{{asset($user->image ?? 'images/90x90.jpg' ?? 'images/profile.png')}}" alt="profile">
                                             </a>
                                         </td>
-                                        @if($user->accessLevel === 'MC')
+                                        <td class="user-name">{{$user->name}}</td>
+                                        <td>{{$user->lastname}}</td>
+                                        @if($user->isSuperUser())
                                             <td class="text-center">مدیر شرکت</td>
-                                        @elseif($user->accessLevel === 'MR')
-                                            <td class="text-center">مدیر رستوران</td>
-                                        @elseif($user->accessLevel === 'SC')
+                                        @elseif($user->isStaffUser())
                                             <td class="text-center">کارمند شرکت</td>
-                                        @elseif($user->accessLevel === 'SR')
-                                            <td class="text-center">کارمند رستوران</td>
+                                        @elseif($user->isManagerUser())
+                                            <td class="text-center">مدیر رستوران</td>
                                         @else
                                             <td class="text-center">کاربر</td>
                                         @endif
-                                        @if($user->gender === 'M')
+                                        @if($user->isMan())
                                             <td class="text-center">مرد</td>
-                                        @elseif($user->gender === 'F')
+                                        @elseif($user->isFemale())
                                             <td class="text-center">زن</td>
                                         @else
                                             <td class="text-center"></td>
@@ -69,7 +99,7 @@
                                         @else
                                             <td class="text-center">فعال</td>
                                         @endif
-                                        <td>{{$user->created_at}}</td>
+                                        <td>{{jdate($user->created_at)->format('%d %B %Y')}}</td>
                                         <td class="text-center">
                                             <span class="shadow-none badge badge-primary">{{$user->lastSeen}}</span>
                                         </td>
