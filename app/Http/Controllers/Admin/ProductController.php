@@ -71,45 +71,22 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
+        alert()->success('محصول با موفقیت حذف شد');
         return back();
     }
 
     private $list = [
         'category_name' => 'users' ,
-        'page_name' => 'user_list' ,
-        'has_scrollspy' => 0 ,
-        'scrollspy_offset' => '' ,
-        'alt_menu' => 0 ,
+        'page_name' => 'Products_list' ,
 
     ];
     private $create = [
         'category_name' => 'users' ,
-        'page_name' => 'user_create' ,
-        'has_scrollspy' => 0 ,
-        'scrollspy_offset' => '' ,
-        'alt_menu' => 0 ,
+        'page_name' => 'Product_create' ,
     ];
     private $edit = [
         'category_name' => 'users' ,
-        'page_name' => 'user_edit' ,
-        'has_scrollspy' => 0 ,
-        'scrollspy_offset' => '' ,
-        'alt_menu' => 0 ,
-
-    ];
-    private $account_settings = [
-        'category_name' => 'users' ,
-        'page_name' => 'account_settings' ,
-        'has_scrollspy' => 0 ,
-        'scrollspy_offset' => '' ,
-        'alt_menu' => 0 ,
-    ];
-    private $profile = [
-        'category_name' => 'users' ,
-        'page_name' => 'profile' ,
-        'has_scrollspy' => 0 ,
-        'scrollspy_offset' => '' ,
-        'alt_menu' => 0 ,
+        'page_name' => 'Product_edit' ,
 
     ];
 
