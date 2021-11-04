@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();/*تایید ایمیل*/
             $table->string('identifyNumber')->nullable()->unique();/*کد ملی*/
             $table->string('birthday')->nullable();/*تاریخ تولد*/
-            $table->boolean('is_superuser')->default(0);/*مدیر*/
+            $table->boolean('is_admin')->default(0);/*مدیر*/
             $table->boolean('is_staff')->default(0);/*کارمند*/
             $table->boolean('is_manager')->default(0);/*مدیر رستوران*/
             $table->string('lastSeen')->nullable();/*آخرین بازدید*/
