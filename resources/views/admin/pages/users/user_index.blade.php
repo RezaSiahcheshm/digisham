@@ -74,31 +74,11 @@
                                         </td>
                                         <td class="user-name">{{$user->name}}</td>
                                         <td>{{$user->lastname}}</td>
-                                        @if($user->isSuperUser())
-                                            <td class="text-center">مدیر شرکت</td>
-                                        @elseif($user->isStaffUser())
-                                            <td class="text-center">کارمند شرکت</td>
-                                        @elseif($user->isManagerUser())
-                                            <td class="text-center">مدیر رستوران</td>
-                                        @else
-                                            <td class="text-center">کاربر</td>
-                                        @endif
-                                        @if($user->isMan())
-                                            <td class="text-center">مرد</td>
-                                        @elseif($user->isFemale())
-                                            <td class="text-center">زن</td>
-                                        @else
-                                            <td class="text-center"></td>
-                                        @endif
+                                        <td class="text-center">{{getAccessLevel($user)}}</td>
+                                        <td class="text-center">{{getGender($user)}}</td>
                                         <td class="text-center">{{$user->username}}</td>
                                         <td>{{$user->mobile}}</td>
-                                        @if($user->status === 'S')
-                                            <td class="text-center">تعلیق</td>
-                                        @elseif($user->status === 'B')
-                                            <td class="text-center">مسدود</td>
-                                        @else
-                                            <td class="text-center">فعال</td>
-                                        @endif
+                                        <td class="text-center">{{getStatus($user)}}</td>
                                         <td>{{jdate($user->created_at)->format('%d %B %Y')}}</td>
                                         <td class="text-center">
                                             <span class="shadow-none badge badge-primary">{{$user->lastSeen}}</span>

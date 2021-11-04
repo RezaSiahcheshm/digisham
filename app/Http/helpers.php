@@ -20,27 +20,55 @@ if(!function_exists('isActive')) {
             } elseif(!empty($user->name)) {
                 return $user->name;
             } else {
-                return 'Name lastname';
+                return 'نام و نام خانوادگی';
             }
         }
     }
 
     function getAccessLevel($user): string
     {
-        if(!empty($user->accessLevel)) {
-            if($user->accessLevel === 'MC') {
+        if(!empty($user)) {
+            if($user->isAdmin()) {
                 return 'مدیر شرکت';
-            } elseif($user->accessLevel === 'MR') {
-                return 'مدیر رستوران';
-            } elseif($user->accessLevel === 'SC') {
+            } elseif($user->isStaffUser()) {
                 return 'کارمند شرکت';
-            } elseif($user->accessLevel === 'SR') {
-                return 'کارمند رستوران';
+            } elseif($user->isManagerUser()) {
+                return 'مدیر رستوران';
             } else {
                 return 'کاربر';
             }
-        } else{
-            return 'لطفا وارد شوید';
+        } else {
+            return 'سمت';
+        }
+    }
+
+    function getGender($user): string
+    {
+        if(!empty($user)) {
+            if($user->isMan()) {
+                return 'مرد';
+            } elseif($user->isFemale()) {
+                return 'زن';
+            } else {
+                return 'تعیین نشده';
+            }
+        } else {
+            return 'جنسیت';
+        }
+    }
+
+    function getStatus($user): string
+    {
+        if(!empty($user->status)) {
+            if($user->status === 'S') {
+                return 'تعلیق';
+            } elseif($user->status === 'B') {
+                return 'مسدود';
+            } else {
+                return 'فعال';
+            }
+        } else {
+            return 'وضعیت حساب';
         }
     }
 
