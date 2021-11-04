@@ -16,47 +16,23 @@
 <!-- END GLOBAL MANDATORY STYLES -->
 
 <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+@yield('style')
 @switch($page_name)
 
     @case('user_list')
     {{-- User List --}}
-    <link rel="stylesheet" type="text/css" href="{{asset('plugins/table/datatable/datatables.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('./css/admin/forms/theme-checkbox-radio.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('plugins/table/datatable/dt-global_style.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('plugins/table/datatable/custom_dt_custom.css')}}">
     @break
 
-    @case('user_create')@case('user_edit')
-    {{-- User Create --}}{{-- User Edit --}}
-    <link rel="stylesheet" type="text/css" href="{{asset('plugins/dropify/dropify.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('./css/admin/tables/custom-table.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{asset('./css/admin/elements/alert.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap-select/bootstrap-select.min.css')}}">
-
-    <style>
-        .btn-light {
-            border-color: transparent;
-        }
-
-        .widget .widget-header {
-            border-bottom: 1px solid #ebedf2;
-        }
-    </style>
+    @case('user_create')
+    {{-- User Create --}}
     @break
 
-    @case('account_settings')
-    {{-- User Account Settings --}}
-    <link rel="stylesheet" type="text/css" href="{{asset('./css/admin/users/account-setting.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{asset('plugins/dropify/dropify.min.css')}}">
+    @case('user_edit')
+    {{-- User Edit --}}
     @break
 
-    @case('profile')
-    {{-- User Profile --}}
-    <link rel="stylesheet" type="text/css" href="{{asset('./css/admin/users/user-profile.css')}}"/>
-    @break
-
-    @case('cafe_list')
-    {{-- Cafe List --}}
+    @case('cafe_list')@case('Products_list')
+    {{-- Cafe List --}}{{-- Products List --}}
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/table/datatable/datatables.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('./css/admin/forms/theme-checkbox-radio.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/table/datatable/dt-global_style.css')}}">
