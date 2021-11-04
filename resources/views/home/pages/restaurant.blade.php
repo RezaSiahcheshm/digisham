@@ -73,7 +73,7 @@
         <main class="pt-2">
             <div class="d-flex justify-content-between mb-2">
                 <h1 class="h2 my-auto mr-3"> رستوران {{$cafe->name}}</h1>
-                <a href="#comment" class="border border-secondary rounded text-center px-1 py-2 ml-3 mt-1 ">
+                <a href="{{route('information',$cafe->id)}}" class="border border-secondary rounded text-center px-1 py-2 ml-3 mt-1 ">
                     <small class="text-muted px-1">اطلاعات و نظرات</small>
                     <div class="d-flex align-items-center">
                         <span class="align-items-center px-1">0<i class="fas fa-comment-alt pr-1"></i></span>
