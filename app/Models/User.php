@@ -53,9 +53,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime' ,
     ];
 
-    public function isSuperUser()
+    public function isAdmin()
     {
-        return $this->is_superuser;
+        return $this->is_admin;
     }
 
     public function isStaffUser()

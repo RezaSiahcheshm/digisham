@@ -29,11 +29,11 @@ class UsersController extends Controller
         $cafeManagerOwn = collect([]);
 //        $cafeManagerOwn = User::where('cafe_id' , auth()->user()->cafe_id)->get();
         $customer = collect([]);
-        if(Gate::allows('show-users-company-admin')) $admin = User::where('is_superuser' , ['1'])->get();
+        if(Gate::allows('show-users-company-admin')) $admin = User::where('is_admin' , ['1'])->get();
         if(Gate::allows('show-users-company-staff')) $companyManager = User::where('is_staff' , ['1'])->get();
         if(Gate::allows('show-users-cafe-manager')) $cafeManager = User::where('is_manager' , ['1'])->get();
         if(Gate::allows('show-users-cafe-manager-own')) $cafeManagerOwn = User::where('cafe_id' , auth()->user()->cafe_id)->get();
-        if(Gate::allows('show-users-customer')) $customer = User::where('is_superuser' , ['0'])->where('is_staff' , ['0'])->where('is_manager' , ['0'])->get();
+        if(Gate::allows('show-users-customer')) $customer = User::where('is_admin' , ['0'])->where('is_staff' , ['0'])->where('is_manager' , ['0'])->get();
         $users = $loggedUser->merge($admin)->merge($companyManager)->merge($cafeManager)->merge($customer)->merge($cafeManagerOwn)->unique('id');
 
         $this->seo()->setTitle('لیست کاربران ');

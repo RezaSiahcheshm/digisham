@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::before(function ($user){
-            if($user->isSuperUser()) return true;
+            if($user->isAdmin()) return true;
         });
 
         foreach (Permission::all() as $permission) {
