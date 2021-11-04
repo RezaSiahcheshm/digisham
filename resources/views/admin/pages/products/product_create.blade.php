@@ -1,4 +1,25 @@
 @extends('layouts.admin-master')
+@section('style')
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/dropify/dropify.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('./css/admin/tables/custom-table.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('./css/admin/elements/alert.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap-select/bootstrap-select.min.css')}}">
+    <style>
+        .btn-light {
+            border-color: transparent;
+        }
+
+        .widget .widget-header {
+            border-bottom: 1px solid #ebedf2;
+        }
+    </style>
+@endsection
+@section('script')
+    <script src="{{asset('assets/js/users/account-settings.js')}}"></script>
+    <script src="{{asset('plugins/dropify/dropify.min.js')}}"></script>
+    <script src="{{asset('plugins/blockui/jquery.blockUI.min.js')}}"></script>
+    <script src="{{asset('plugins/bootstrap-select/bootstrap-select.min.js')}}"></script>
+@endsection
 @section('content')
     <div class="layout-y-spacing row mt-4 mx-0">
         <div class="col-xl-9 mx-auto">
