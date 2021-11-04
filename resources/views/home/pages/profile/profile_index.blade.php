@@ -30,7 +30,7 @@
                 <i class="fas fa-times"></i>
             </a>
             <div class="d-flex flex-column">
-                <img class="rounded-circle" src="{{asset('images/profile.png')}}" alt="profile" width="150" height="150">
+                <img class="rounded-circle" src="{{asset(Auth::user()->image ?? 'images/profile.png')}}" alt="profile" width="150" height="150">
                 <span class="text-center m-0 pt-3">{{getFullName(Auth::user())}}</span>
             </div>
             <span class="icon iclose invisible">
@@ -40,7 +40,7 @@
         <main>
             <div class="d-flex flex-column px-2 py-1 ">
                 <span class="border-bottom px-3 py-3">
-                    <a href="profile">نمایش اطلاعات کاربری</a>
+                    <a href="{{route('profile.edit')}}">نمایش اطلاعات کاربری</a>
                 </span>
                 {{--<div class="border-bottom px-3 py-3 d-flex justify-content-between align-items-center">--}}
                 {{--    <span>--}}
