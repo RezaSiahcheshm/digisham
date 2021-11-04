@@ -24,7 +24,7 @@
 @endsection
 @section('content')
     <div class="wrapper">
-        <a href="{{route('slideMenu')}}" class="ibars icon text-white "><i class="fas fa-bars"></i></a>
+        <a href="{{route('profile.index')}}" class="ibars icon text-white "><i class="fas fa-bars"></i></a>
         <main class=""></main>
     </div>
 @endsection
