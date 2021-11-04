@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CafeController;
+use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UsersController;
 use Artesaos\SEOTools\Facades\SEOTools;
 
@@ -18,7 +20,8 @@ use Artesaos\SEOTools\Facades\SEOTools;
 |
 */
 
-//Route::get('/' , function () {
+Route::get('/' , function () {
+//return view('admin.pages.users.user_profile');
 //    return \Carbon\Carbon::now();
 //    $product = \App\Models\Product::find(1);
 //    $product->Comments()->create([
@@ -37,9 +40,11 @@ use Artesaos\SEOTools\Facades\SEOTools;
 //return $cafe->products()->get();
 //    $product = \App\Models\Product::find(1);
 //    return $product->productable;
-//});
+});
 Route::get('/' , AdminController::class);
 Route::resource('users' , UsersController::class)->except('show');
+Route::resource('permissions' , PermissionController::class)->except('show');
+Route::resource('roles' , RoleController::class)->except('show');
 Route::resource('cafe' , CafeController::class)->except('show');
 Route::resource('products' , ProductController::class)->except('show');
 
