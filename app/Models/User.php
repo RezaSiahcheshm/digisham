@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'cafe_id',
+        'cafe_id' ,
         'name' ,
         'lastname' ,
         'accessLevel' ,
@@ -52,6 +52,45 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime' ,
     ];
+
+    public function isSuperUser()
+    {
+        return $this->is_superuser;
+    }
+
+    public function isStaffUser()
+    {
+        return $this->is_staff;
+    }
+
+    public function isManagerUser()
+    {
+        return $this->is_manager;
+    }
+
+    public function isMan()
+    {
+        return $this->gender === 'M';
+    }
+    public function isFemale()
+    {
+        return $this->gender === 'F';
+    }
+//    public function whatIsGender($value)
+//    {
+//        return $this->gender === $value;
+//    }
+
+    public function hasRole($roles)
+    {
+        return !!$roles->intersect($this->roles)->all();
+    }
+
+    public function hasPermission($permission)
+    {
+        return $this->permissions->contains('name' , $permission->name) || $this->hasRole($permission->roles) ;
+    }
+
     /*rel user,token*/
     public function token()
     {
@@ -78,13 +117,16 @@ class User extends Authenticatable
 //    {
 //        return $this->belongsTo(Cafe::class);
 //    }
-    public function isSuperUser()
+
+    public function permissions()
     {
-        return $this->is_superuser;
+        return $this->belongsToMany(Permission::class);
     }
 
-    public function isStaffUser()
+    public function roles()
     {
-        return $this->is_staff;
+        return $this->belongsToMany(Role::class);
     }
+
+
 }
