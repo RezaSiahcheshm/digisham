@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('birthday')->nullable();/*تاریخ تولد*/
             $table->boolean('is_superuser')->default(0);/*مدیر*/
             $table->boolean('is_staff')->default(0);/*کارمند*/
+            $table->boolean('is_manager')->default(0);/*مدیر رستوران*/
             $table->string('lastSeen')->nullable();/*آخرین بازدید*/
             $table->string('image')->nullable();/**/
             $table->enum('status' , ['A' , 'S' , 'B'])->default('A');/*وضعیت حساب کاربر*/
